@@ -5,6 +5,11 @@
 import os, shutil, pillow
 
 #TODO Move to photo directory if not already there.
+currentDirectory = os.getcwd()
+
+if currentDirectory != os.path.abspath(r"E:\Pictures\Pictures\Pictures"):
+    os.chdir("E:\Pictures\Pictures\Pictures")
+    currentDirectory = os.getcwd()
 
 #TODO Walk through the photos in each of the folders in the directory.
 

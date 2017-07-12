@@ -74,9 +74,29 @@ for i in range(len(months)):
     if not os.path.exists("E:\\Pictures\\2015_Photos\\" + months[i]):
         os.mkdir("E:\\Pictures\\2015_Photos\\" + months[i])
 
-#TODO Move the photos to the appropriate Month Folders
+#TODO Move the photos in each of the Year folders to their appropriate Month Folders
 
 for folderName, subfolders, files in os.walk("E:\\Pictures\\2017_Photos"):
+
+    for filename in files:
+
+        if photoRegEx.search(filename) != None:
+            photo = Image.open(os.path.abspath(filename))
+            creationDate = photo._getexif()[36867]
+            creationDate = creationDate[5:7]
+            shutil.move(os.path.abspath(filename), os.path.abspath(folderName + "\\" + months[int(creationDate) - 1]))
+
+for folderName, subfolders, files in os.walk("E:\\Pictures\\2016_Photos"):
+
+    for filename in files:
+
+        if photoRegEx.search(filename) != None:
+            photo = Image.open(os.path.abspath(filename))
+            creationDate = photo._getexif()[36867]
+            creationDate = creationDate[5:7]
+            shutil.move(os.path.abspath(filename), os.path.abspath(folderName + "\\" + months[int(creationDate) - 1]))
+
+for folderName, subfolders, files in os.walk("E:\\Pictures\\2015_Photos"):
 
     for filename in files:
 

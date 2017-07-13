@@ -12,8 +12,8 @@ photoRegEx = re.compile(r".JPG$")
 #Move to photo directory if not already there.
 currentDirectory = os.getcwd()
 
-if currentDirectory != r"E:\Pictures\Pictures\Pictures":
-    os.chdir(r"E:\Pictures\Pictures\Pictures")
+if currentDirectory != r"C:\Users\ckansas\Pictures":
+    os.chdir(r"C:\Users\ckansas\Pictures")
     currentDirectory = os.getcwd()
 
 #Walk through the photos in each of the folders in the directory.
@@ -29,36 +29,36 @@ for folderName, subfolders, files in os.walk(currentDirectory):
             if creationDate is not None: #Sort by Year if creationDate exists
 
                 if creationDate[0:4] == "2016":
-                    print("%s is from 2016 - copying to the 2016 folder." % (filename))
+                    print("Copying %s to the 2016 folder." % (filename))
 
-                    if not os.path.exists(r"E:\Pictures\2016_Photos"):
-                        os.mkdir(r"E:\Pictures\2016_Photos")
+                    if not os.path.exists(r"C:\Users\ckansas\Pictures\2016_Photos"):
+                        os.mkdir(r"C:\Users\ckansas\Pictures\2016_Photos")
 
-                    shutil.copy(os.path.abspath(folderName + "\\" + filename), r"E:\Pictures\2016_Photos")
+                    shutil.copy(os.path.abspath(folderName + "\\" + filename), r"C:\Users\ckansas\Pictures\2016_Photos")
 
                 elif creationDate[0:4] == "2015":
-                    print("%s is from 2015 - copying to the 2015 folder." % (filename))
+                    print("Copying %s to the 2015 folder." % (filename))
 
-                    if not os.path.exists(r"E:\Pictures\2015_Photos"):
-                        os.mkdir(r"E:\Pictures\2015_Photos")
+                    if not os.path.exists(r"C:\Users\ckansas\Pictures\2015_Photos"):
+                        os.mkdir(r"C:\Users\ckansas\Pictures\2015_Photos")
 
-                    shutil.copy(os.path.abspath(folderName + "\\" + filename), r"E:\Pictures\2015_Photos")
+                    shutil.copy(os.path.abspath(folderName + "\\" + filename), r"C:\Users\ckansas\Pictures\2015_Photos")
 
                 elif creationDate[0:4] == "2017":
-                    print("%s is from 2017 - copying to the 2017 folder." % (filename))
+                    print("Copying %s to the 2017 folder." % (filename))
 
-                    if not os.path.exists(r"E:\Pictures\2017_Photos"):
-                        os.mkdir(r"E:\Pictures\2017_Photos")
+                    if not os.path.exists(r"C:\Users\ckansas\Pictures\2017_Photos"):
+                        os.mkdir(r"C:\Users\ckansas\Pictures\2017_Photos")
 
-                    shutil.copy(os.path.abspath(folderName + "\\" + filename), r"E:\Pictures\2017_Photos")
+                    shutil.copy(os.path.abspath(folderName + "\\" + filename), r"C:\Users\ckansas\Pictures\2017_Photos")
 
             else:
                 print("%s does not have a creation date - moving to the No Data File." % (filename))
 
-                if not os.path.exists(r"E:\Pictures\NoData_Photos"):
-                    os.mkdir(r"E:\Pictures\NoData_Photos")
+                if not os.path.exists(r"C:\Users\ckansas\Pictures\NoData_Photos"):
+                    os.mkdir(r"C:\Users\ckansas\Pictures\NoData_Photos")
 
-                shutil.copy(os.path.abspath(folderName + "\\" + filename), r"E:\Pictures\NoData_Photos")
+                shutil.copy(os.path.abspath(folderName + "\\" + filename), r"C:\Users\ckansas\Pictures\NoData_Photos")
 
                 continue
 
@@ -67,18 +67,18 @@ for folderName, subfolders, files in os.walk(currentDirectory):
 months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
 for i in range(len(months)):
-    if not os.path.exists("E:\\Pictures\\2017_Photos\\" + months[i]):
-        os.mkdir("E:\\Pictures\\2017_Photos\\" + months[i])
+    if not os.path.exists("C:\\Users\\ckansas\\Pictures\\2017_Photos\\" + months[i]):
+        os.mkdir("C:\\Users\\ckansas\\Pictures\\2017_Photos\\" + months[i])
 
-    if not os.path.exists("E:\\Pictures\\2016_Photos\\" + months[i]):
-        os.mkdir("E:\\Pictures\\2016_Photos\\" + months[i])
+    if not os.path.exists("C:\\Users\\ckansas\\Pictures\\2016_Photos\\" + months[i]):
+        os.mkdir("C:\\Users\\ckansas\\Pictures\\2016_Photos\\" + months[i])
 
-    if not os.path.exists("E:\\Pictures\\2015_Photos\\" + months[i]):
-        os.mkdir("E:\\Pictures\\2015_Photos\\" + months[i])
+    if not os.path.exists("C:\\Users\\ckansas\\Pictures\\2015_Photos\\" + months[i]):
+        os.mkdir("C:\\Users\\ckansas\\Pictures\\2015_Photos\\" + months[i])
 
 #Move the photos in each of the Year folders to their appropriate Month Folders
 
-for folderName, subfolders, files in os.walk("E:\\Pictures\\2017_Photos"):
+for folderName, subfolders, files in os.walk("C:\\Users\\ckansas\\Pictures\\2017_Photos"):
 
     for filename in files:
 
@@ -89,8 +89,8 @@ for folderName, subfolders, files in os.walk("E:\\Pictures\\2017_Photos"):
             creationDate = creationDate[5:7]
             shutil.copy(os.path.abspath(folderName + "\\" + filename), os.path.abspath(folderName + "\\" + months[int(creationDate) - 1]))
 
-            if os.path.exists("E:\\Pictures\\2017_Photos\\" + filename):
-                os.unlink("E:\\Pictures\\2017_Photos\\" + filename)
+            if os.path.exists("C:\\Users\\ckansas\\Pictures\\2017_Photos\\" + filename):
+                os.unlink("C:\\Users\\ckansas\\Pictures\\2017_Photos\\" + filename)
             else:
                 continue
 
@@ -98,7 +98,7 @@ for folderName, subfolders, files in os.walk("E:\\Pictures\\2017_Photos"):
 
 print("Completed moving files in 2017_Photos Folder.")
 
-for folderName, subfolders, files in os.walk("E:\\Pictures\\2016_Photos"):
+for folderName, subfolders, files in os.walk("C:\\Users\\ckansas\\Pictures\\2016_Photos"):
 
     for filename in files:
 
@@ -109,8 +109,8 @@ for folderName, subfolders, files in os.walk("E:\\Pictures\\2016_Photos"):
             creationDate = creationDate[5:7]
             shutil.copy(os.path.abspath(folderName + "\\" + filename), os.path.abspath(folderName + "\\" + months[int(creationDate) - 1]))
 
-            if os.path.exists("E:\\Pictures\\2016_Photos\\" + filename):
-                os.unlink("E:\\Pictures\\2016_Photos\\" + filename)
+            if os.path.exists("C:\\Users\\ckansas\\Pictures\\2016_Photos\\" + filename):
+                os.unlink("C:\\Users\\ckansas\\Pictures\\2016_Photos\\" + filename)
             else:
                 continue
 
@@ -118,7 +118,7 @@ for folderName, subfolders, files in os.walk("E:\\Pictures\\2016_Photos"):
 
 print("Completed moving files in 2016_Photos Folder.")
 
-for folderName, subfolders, files in os.walk("E:\\Pictures\\2015_Photos"):
+for folderName, subfolders, files in os.walk("C:\\Users\\ckansas\\Pictures\\2015_Photos"):
 
     for filename in files:
 
@@ -129,8 +129,8 @@ for folderName, subfolders, files in os.walk("E:\\Pictures\\2015_Photos"):
             creationDate = creationDate[5:7]
             shutil.copy(os.path.abspath(folderName + "\\" + filename), os.path.abspath(folderName + "\\" + months[int(creationDate) - 1]))
 
-            if os.path.exists("E:\\Pictures\\2015_Photos\\" + filename):
-                os.unlink("E:\\Pictures\\2015_Photos\\" + filename)
+            if os.path.exists("C:\\Users\\ckansas\\Pictures\\2015_Photos\\" + filename):
+                os.unlink("C:\\Users\\ckansas\\Pictures\\2015_Photos\\" + filename)
             else:
                 continue
 
